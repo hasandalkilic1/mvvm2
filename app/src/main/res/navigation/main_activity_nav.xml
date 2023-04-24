@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/mainScreenFragment">
+
+    <fragment
+        android:id="@+id/mainScreenFragment"
+        android:name="eu.tutorials.mvvm2.ui.fragment.MainScreenFragment"
+        android:label="fragment_main_screen"
+        tools:layout="@layout/fragment_main_screen" >
+        <action
+            android:id="@+id/registerTransition"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/detailTransition"
+            app:destination="@id/personDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personDetailFragment"
+        android:name="eu.tutorials.mvvm2.ui.fragment.PersonDetailFragment"
+        android:label="fragment_person_detail"
+        tools:layout="@layout/fragment_person_detail" >
+        <argument
+            android:name="person"
+            app:argType="eu.tutorials.mvvm2.data.entity.Person" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="eu.tutorials.mvvm2.ui.fragment.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+</navigation>

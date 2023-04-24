@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="toolbar_detail_title" type="String" />
+        <variable name="PersonDetailFragment" type="eu.tutorials.mvvm2.ui.fragment.PersonDetailFragment" />
+        <variable name="person" type="eu.tutorials.mvvm2.data.entity.Person" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.PersonDetailFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_person_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:title="@{toolbar_detail_title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDetailName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_person_detail">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDetailName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{person.name}"
+                android:hint="Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDetailGsm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilDetailName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDetailGsm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{person.gsm}"
+                android:hint="GSM" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_detail_update"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:text="UPDATE"
+            android:onClick="@{()->PersonDetailFragment.btnUpdatePerson(person.id,etDetailName.getText().toString(),etDetailGsm.getText().toString())}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilDetailGsm" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
